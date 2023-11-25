@@ -48,7 +48,7 @@ public:
     
     return std::accumulate( d_num_completed_histories.begin(),
                             d_num_completed_histories.end(),
-                            0 );
+                            0ull );
   }
 
   //! Check if the simulation is complete

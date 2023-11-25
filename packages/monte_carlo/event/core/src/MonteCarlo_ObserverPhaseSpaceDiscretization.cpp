@@ -18,6 +18,7 @@
 #include "MonteCarlo_DetailedObserverPhaseSpaceDiscretizationImpl.hpp"
 #include "Utility_LoggingMacros.hpp"
 #include "Utility_DesignByContract.hpp"
+#include "Utility_ExceptionTestMacros.hpp"
 
 namespace MonteCarlo{
 
@@ -190,6 +191,13 @@ void ObserverPhaseSpaceDiscretization::calculateBinIndicesAndWeightsOfRange(
 {
   d_impl->calculateBinIndicesAndWeightsOfRange( particle_state_wrapper,
                                                 bin_indices_and_weights );
+}
+
+// Calculate discretization index from individual dimension bin indices
+size_t ObserverPhaseSpaceDiscretization::calculateDiscretizationIndex(
+                    const std::unordered_map<ObserverPhaseSpaceDimension, size_t> dimension_bin_indices) const
+{
+  d_impl->calculateDiscretizationIndex(dimension_bin_indices);
 }
 
 } // end MonteCarlo namespace

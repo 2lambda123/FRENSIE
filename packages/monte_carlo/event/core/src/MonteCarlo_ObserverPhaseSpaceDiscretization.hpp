@@ -117,6 +117,9 @@ public:
                    const ObserverParticleStateWrapper& particle_state_wrapper,
                    BinIndexWeightPairArray& bin_indices_and_weights ) const;
 
+  //! Takes a set of discretized dimensions and their respective indices and calculates the observer discretization index
+  size_t calculateDiscretizationIndex(const std::unordered_map<ObserverPhaseSpaceDimension, size_t> dimension_bin_indices) const;
+
 private:
 
   // Serialize the data
@@ -129,6 +132,7 @@ private:
 
   // The observer phase space dimension implementation
   std::unique_ptr<ObserverPhaseSpaceDiscretizationImpl> d_impl;
+
 };
 
 } // end MonteCarlo namespace

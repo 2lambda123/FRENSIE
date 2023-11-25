@@ -103,8 +103,17 @@ public:
   //! Returns the volumes of the hex elements for the estimator class.
   void getElementVolumes( ElementHandleVolumeMap& element_volumes ) const final override;
 
+  //! Returns the volume of a specific mesh element
+  double getElementVolume( ElementHandle element ) const final override;
+
   //! Returns a bool that says whether or not a point is in the mesh.
   bool isPointInMesh( const double point[3] ) const final override;
+
+  // Compute hex index from plane indices
+  size_t findIndex( const size_t i, const size_t j, const size_t k ) const;
+
+  // Compute hex index from plane indices
+  size_t findIndex( const size_t indices[3] ) const;
 
   //! Returns the index of the hex that contains a given point.
   ElementHandle whichElementIsPointIn( const double point[3] ) const final override;
@@ -223,12 +232,6 @@ private:
   void pushPoint( double point[3],
                   const double direction[3],
                   const double push_distance ) const;
-
-  // Compute hex index from plane indices
-  size_t findIndex( const size_t i, const size_t j, const size_t k ) const;
-
-  // Compute hex index from plane indices
-  size_t findIndex( const size_t indices[3] ) const;
 
   // Save the data to an archive
   template<typename Archive>
